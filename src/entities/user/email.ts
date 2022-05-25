@@ -1,26 +1,20 @@
-import { InvalidNameError } from "./errors/invalidName";
 import { Result } from "../../utils/result";
+import { InvalidEmailError } from "./errors/invalidEmail";
 
 export class Email {
-  private email: string;
-
-  private constructor(email: string) {
-    this.email = email;
-  }
-
-  get value() {
-    return this.email;
-  }
-
   static create(email: string) {
     if (Email.isValid(email)) {
-      return Result<Email>.success(new Email(email));
+      return Result<Email>.success(new Email());
     }
 
-    return Result<InvalidNameError>.failure(new InvalidNameError('Email is invalid'));
+    return Result<InvalidEmailError>.failure(new InvalidEmailError('Email is invalid'));
   }
 
-  static isValid(name: string) {
+  static isValid(email: string) {
+    const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/g);
+    if (!email || !emailRegex.test(email)) {
+      return false;
+    }
     return true;
   }
 }

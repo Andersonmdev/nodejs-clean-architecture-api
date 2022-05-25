@@ -2,19 +2,9 @@ import { InvalidNameError } from "./errors/invalidName";
 import { Result } from "../../utils/result";
 
 export class Name {
-  private readonly name: string;
-
-  private constructor(name: string) {
-    this.name = name;
-  }
-
-  get value() {
-    return this.name;
-  }
-
   public static create(name: string) {
     if (Name.isValid(name)) {
-      return Result<Name>.success(new Name(name));
+      return Result<Name>.success(new Name());
     }
 
     return Result<InvalidNameError>.failure(new InvalidNameError('Name is invalid'));
