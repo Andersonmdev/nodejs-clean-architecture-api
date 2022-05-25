@@ -1,4 +1,4 @@
-import { User, UserProps } from "./user";
+import { User } from "./user";
 import { InvalidNameError } from "./errors/invalidName";
 import { InvalidEmailError } from "./errors/invalidEmail";
 import { InvalidPasswordError } from "./errors/invalidPassword";
@@ -55,18 +55,18 @@ describe('User entity', () => {
     });
 
     expect(userOrError.error).toBeInstanceOf(InvalidPasswordError);
-  })
+  });
 
   it('should create a user', () => {
     const userOrError = User.create(userData);
-    const user: User = userOrError.getValue();
-    const userProps: UserProps = user.props;
+    const user = userOrError.getValue();
+    const userProps = user.props;
 
     expect(userOrError.error).toBeFalsy();
     expect(userProps.name).toBe(userData.name);
     expect(userProps.email).toBe(userData.email);
     expect(user.props.password).toBe(userData.password);
     expect(user.props.createdAt).toBeInstanceOf(Date);
-  })
+  });
 
 })

@@ -1,5 +1,6 @@
-import { User } from '../entities/user';
-import { UsersRepository } from '../repositories/UsersRepository';
+import { User } from '../../entities/userEntity/user';
+import { UsersRepository } from '../../repositories/UsersRepository';
+import { Result } from '../../utils/result';
 
 type CreateUserUseCaseRequest = {
   name: string;
@@ -16,9 +17,16 @@ export class CreateUserUseCase {
   }
 
   async execute(data: CreateUserUseCaseRequest) {
-    const user = User.create(data);
+    const userOrError = User.create(data);
+
+    if (userOrError.isFailure) {
+      return userOrError;
+    }
+
+    const user: User = userOrError.getValue()
     await this.usersRepository.create(user);
     user.props.password = '';
-    return user;
+
+    return Result<User>.success(user);
   }
 }

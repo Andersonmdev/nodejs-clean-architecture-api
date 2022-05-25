@@ -4,7 +4,7 @@ import { Email } from './email';
 import { Name } from './name';
 import { Password } from './password';
 
-export type UserProps = {
+type UserProps = {
   name: string;
   email: string;
   password: string;
