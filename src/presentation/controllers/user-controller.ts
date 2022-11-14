@@ -7,6 +7,6 @@ export class UserController {
     const userRepository = new UserRepositoryPrisma();
     const getAllUsersUseCase = new GetAllUsersUseCase(userRepository);
     const users = await getAllUsersUseCase.execute();
-    return await reply.send(users);
+    return await reply.send({ users });
   }
 }

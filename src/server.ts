@@ -3,6 +3,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import jwt from '@fastify/jwt';
 import { userRoutes } from './presentation/routes/user-routes';
+import { authRoutes } from './presentation/routes/auth-routes';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ async function bootstrap() {
   }
   await fastify.register(jwt, { secret: jwtSecret });
 
+  await fastify.register(authRoutes);
   await fastify.register(userRoutes);
 
   const host = process.env.HOST ?? '0.0.0.0';
