@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A reference for API development with node",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "test": "jest --watchAll --collectCoverage"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -16,6 +16,14 @@
     "@typescript-eslint",
     "jest"
   ],
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "coverage/",
+    "build/",
+    "public/",
+    "jest.config*"
+  ],
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
