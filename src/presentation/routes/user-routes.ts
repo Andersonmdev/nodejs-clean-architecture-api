@@ -5,4 +5,5 @@ const userController = new UserController();
 
 export async function userRoutes(fastify: FastifyInstance) {
   fastify.get('/users', userController.getUsers);
+  fastify.post('/users', userController.createUser);
 }
