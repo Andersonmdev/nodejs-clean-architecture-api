@@ -1,9 +1,8 @@
 import { FastifyInstance } from 'fastify';
 import { UserController } from '../controllers/user-controller';
 
-const userController = new UserController();
-
 export async function userRoutes(fastify: FastifyInstance) {
-  fastify.get('/users', userController.getUsers);
-  fastify.post('/users', userController.createUser);
+  const userController = new UserController();
+  fastify.get('/users', async (request, reply) => await userController.getUsers(request, reply));
+  fastify.post('/users', async (request, reply) => await userController.createUser(request, reply));
 }

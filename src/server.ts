@@ -9,6 +9,7 @@ dotenv.config();
 
 async function bootstrap() {
   const fastify = Fastify({ logger: true });
+
   await fastify.register(cors, { origin: true });
 
   const jwtSecret = process.env.JWT_SECRET;

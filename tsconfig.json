@@ -96,5 +96,6 @@
     "node_modules",
     "**/*.test.ts",
     "jest.config*",
+    "prisma/seed.ts"
   ]
 }
