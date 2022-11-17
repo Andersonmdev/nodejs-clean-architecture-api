@@ -1,4 +1,4 @@
-# Base Node.js API
+# Node.js API
 
 Practice SOLID principles and TDD in a REST API with Node.js and TypeScript.
 
