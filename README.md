@@ -11,9 +11,3 @@ Practice SOLID principles and TDD in a REST API with Node.js and TypeScript.
 ## Package manager
 
 - npm
-
-## Tratamento de erros
-
-VALUE OBJECT
-
-Principio da Menor Surpresa
