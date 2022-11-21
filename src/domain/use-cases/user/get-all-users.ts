@@ -1,6 +1,7 @@
-import { UserRepository } from '../../repositories/user-repository';
+import { UserRepository } from '../../interfaces/repositories/user-repository';
+import { GetAllUsersUseCase } from '../../interfaces/use-cases/user/get-all-users-use-case';
 
-export class GetAllUsersUseCase {
+export class GetAllUsers implements GetAllUsersUseCase {
   constructor(private readonly userRepository: UserRepository) { }
 
   async execute() {

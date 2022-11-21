@@ -1,6 +1,6 @@
 import { prisma } from './prisma';
 import { User } from '../../../domain/entities/user';
-import { UserRepository } from '../../../domain/repositories/user-repository';
+import { UserRepository } from '../../../domain/interfaces/repositories/user-repository';
 
 export class UserRepositoryPrisma implements UserRepository {
   async createUser(user: User) {

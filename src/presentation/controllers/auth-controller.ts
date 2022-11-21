@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { compare } from 'bcryptjs';
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { UserRepositoryPrisma } from '../../application/repositories/prisma/user-repository-prisma';
-import { FindUserByEmailUseCase } from '../../domain/use-cases/user/find-user-by-email';
+import { FindUserByEmail } from '../../domain/use-cases/user/find-user-by-email';
 
 export class AuthController {
   async login(fastify: FastifyInstance, request: FastifyRequest, reply: FastifyReply) {
@@ -14,8 +14,8 @@ export class AuthController {
 
     const userRepository = new UserRepositoryPrisma();
     // @ts-expect-error
-    const findUserByEmailUseCase = new FindUserByEmailUseCase(userRepository);
-    const userFound = await findUserByEmailUseCase.execute(user.email);
+    const findUserByEmail = new FindUserByEmail(userRepository);
+    const userFound = await findUserByEmail.execute(user.email);
 
     if (userFound) {
       const isPasswordValid = await compare(user.password, userFound.password as string);

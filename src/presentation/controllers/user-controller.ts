@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { hash, genSalt } from 'bcryptjs';
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { CreateUserUseCase } from '../../domain/use-cases/user/create-user';
-import { GetAllUsersUseCase } from '../../domain/use-cases/user/get-all-users';
+import { CreateUser } from '../../domain/use-cases/user/create-user';
+import { GetAllUsers } from '../../domain/use-cases/user/get-all-users';
 import { UserRepositoryPrisma } from '../../application/repositories/prisma/user-repository-prisma';
 
 interface UserInput {
@@ -28,8 +28,8 @@ export class UserController {
 
     const userRepository = new UserRepositoryPrisma();
     // @ts-expect-error
-    const createUserUseCase = new CreateUserUseCase(userRepository);
-    await createUserUseCase.execute({
+    const createUser = new CreateUser(userRepository);
+    await createUser.execute({
       email: user.email,
       password: user.password,
       name: user.name
@@ -41,8 +41,8 @@ export class UserController {
   async getUsers(request: FastifyRequest, reply: FastifyReply) {
     const userRepository = new UserRepositoryPrisma();
     // @ts-expect-error
-    const getAllUsersUseCase = new GetAllUsersUseCase(userRepository);
-    const users = await getAllUsersUseCase.execute();
+    const getAllUsers = new GetAllUsers(userRepository);
+    const users = await getAllUsers.execute();
     return await reply.send({ users });
   }
 }
