@@ -1,13 +1,28 @@
 # Node.js API
 
-Practice SOLID principles and TDD in a REST API with Node.js and TypeScript.
+Project to practice SOLID principles and TDD in a simple API with [Node.js](https://nodejs.org/en/) and [TypeScript](https://www.typescriptlang.org/).
 
-### Technology and dependencies
+### Dependencies
 
-- fastify
-- prisma ORM
-- typescript
+- Framework [fastify](https://www.fastify.io/).
+- Scheme validation [zod](https://github.com/colinhacks/zod).
+- ORM [Prisma](https://www.prisma.io/).
+- Tests [Jest](https://jestjs.io/).
 
-## Package manager
+## Install dependencies
 
-- npm
+```bash
+npm install
+```
+
+## Run the app
+
+```bash
+npm run dev
+```
+
+## Run tests
+
+```bash
+npm run test
+```
